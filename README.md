@@ -7,7 +7,7 @@ A corpus of 227300 words in words_250000_train.txt split into 99% train, 0.5% te
 ## Neural Network
 The idea behind the current architecture is the occurence and co-occurence of n-gram patterns that occur frequently in words. In place of hardcoding n-gram based detection, by applying conv1d layer to the one-hot representation of the game state, the model implicitly learns n-gram representations. This is followed by a bidirectional LSTM, self-attention and an LSTM layer to track long range dependencies of patterns in the words. The output of the final LSTM layer is concatenated with a binary representation of the incorrect guesses made so far. The incorrect_guesses input discourages the model from making the same guess twice while also enabling the agent to efficiently explore the action space.  Finally, a 26 neuron softmax layer outputs the guess. The full architecture shown below uses 169,022 trainable parameters and 384 non-trainable parameters. 
 
-![model](https://github.com/aadittya/Hangman/assets/98756003/c570caaf-ec75-4e22-9313-4f4c196e7e6e)
+![model](https://github.com/aadittya/Hangman/blob/main/model.png)
 
 A custom loss function is used, which adds a custom binary_cross_entropy loss to an auxillary loss term which is a function of the number of incorrect guesses made so far. The model thus penalizes incorrect guesses, the more the incorrect guesses, the more heavily it is penalized.
 
@@ -25,13 +25,13 @@ The agent plays the game for a batch of words parallely, using the neural networ
 ## Results
 Below are the plots of the training_loss, validation_loss and training, validation win rates respectively. 
 
-![loss_vs_epoch](https://github.com/aadittya/Hangman/assets/98756003/1401cd2a-4069-485f-95bb-2e0254ee339f)
+![loss_vs_epoch](https://github.com/aadittya/Hangman/blob/main/loss_vs_epoch.jpg)
 
-![win_rate_vs_epoch](https://github.com/aadittya/Hangman/assets/98756003/5b6e06b0-3d09-4ab4-9351-c3b950f0bea1)
+![win_rate_vs_epoch](https://github.com/aadittya/Hangman/blob/main/win_rate_vs_epoch.jpg)
 
 The Agent is able to solve ~55% of words within 6 lives in both the validation set and the testing set. A slight overfitting is observed which suggests room for improvement for the model.
 
-![test_and_validation_loss_win_rate](https://github.com/aadittya/Hangman/assets/98756003/d9ddf1ab-fdb7-4365-8192-d3e72f587b7b)
+![test_and_validation_loss_win_rate](https://github.com/aadittya/Hangman/blob/main/test_and_validation_loss_win_rate.jpg)
 
 ## Notes
 - The entire training loop has been constructed using only tensors on GPU, to leverage cuda parallelism and reduce compute time.
