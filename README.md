@@ -29,7 +29,7 @@ Below are the plots of the training_loss, validation_loss and training, validati
 
 ![win_rate_vs_epoch](https://github.com/aadittya/Hangman/blob/main/win_rate_vs_epoch.jpg)
 
-The Agent is able to solve ~55% of words within 6 lives in both the validation set and the testing set. A slight overfitting is observed which suggests room for improvement for the model.
+The Agent is able to solve ~58% of words within 6 lives in both the validation set and the testing set. A slight overfitting is observed which suggests room for improvement for the model.
 
 ![test_and_validation_loss_win_rate](https://github.com/aadittya/Hangman/blob/main/test_and_validation_loss_win_rate.jpg)
 
