@@ -1,5 +1,5 @@
 # Hangman
-A Hangman Solver using Deep Reinforcement Learning in Tensorflow
+A Hangman Solver using Deep Reinforcement Learning in Tensorflow (Win Rate 60% with 6 lives)
 
 ## Summary
 A corpus of 227300 words in words_250000_train.txt split into 99% train, 0.5% test and 0.5% validation sets was used to train and evaluate the Deep Reinforcement Learning model. The game starts with all letters unknown. An agent plays the game by sequentially guessing letters. Each letter that is guessed is an output of a neural network, the architecture of which is discussed in the next section. Inputs to the neural network include a one-hot encoded representation of the current game state and all the incorrect guesses made so far. Output of the neural network is a single guess letter. For example, if the word to be guessed is "reinforcement", and the agent has already guessed the letters e,i,a,s and t, the current game state is "_ e i _ _ _ _ _ e _ e _ t" and the incorrect guesses are a, s and t respectively. The neural network takes into account sequential information of each known and unknown letter in the current game state via the use of a bidirectional LSTM and an LSTM layer. The Agent plays the game using the neural network for 50 epochs.
